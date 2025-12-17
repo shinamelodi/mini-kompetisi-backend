@@ -1,23 +1,12 @@
-def evaluate_rules(paket):
-    nilai = paket.nilai_paket
+def evaluate_rules(data):
+    metode = "Tender Cepat"
 
-    # Kualifikasi usaha
-    if nilai <= 15_000_000_000:
-        kualifikasi = "Usaha Kecil"
-    elif nilai <= 50_000_000_000:
-        kualifikasi = "Usaha Menengah"
-    else:
-        kualifikasi = "Usaha Besar"
+    if data.nilai_paket > 200_000_000_000:
+        metode = "Tender"
 
-    # Jaminan penawaran
-    jaminan_penawaran = nilai >= 10_000_000_000
-
-    # Papua (OAP)
-    subkontrak_oap = paket.papua
+    if data.papua or data.spesialis or data.risiko_tinggi:
+        metode = "Seleksi"
 
     return {
-        "kualifikasi": kualifikasi,
-        "jaminan_penawaran": jaminan_penawaran,
-        "subkontrak_oap": subkontrak_oap,
-        "max_pekerjaan_utama": 4
+        "metode_pengadaan": metode
     }
