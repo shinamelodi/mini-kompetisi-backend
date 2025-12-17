@@ -5,7 +5,10 @@ from rules import evaluate_rules
 app = FastAPI(
     title="Mini Kompetisi API",
     description="API evaluasi mini kompetisi PBJ",
-    version="1.0.0"
+    version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json"
 )
 
 @app.get("/")
