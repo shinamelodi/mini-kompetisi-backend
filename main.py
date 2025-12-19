@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from schemas import RuleInput
 from rules import evaluate_rules
+from rules import evaluate_rules, generate_document_data
 
 app = FastAPI(
     title="Mini Kompetisi API",
@@ -25,3 +26,7 @@ def root():
 @app.post("/rules/evaluate")
 def evaluate(data: RuleInput):
     return evaluate_rules(data)
+
+@app.post("/documents/generate")
+def generate_document(data: RuleInput):
+    return generate_document_data(data)
